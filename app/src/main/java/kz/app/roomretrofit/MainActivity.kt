@@ -3,6 +3,7 @@ package kz.app.roomretrofit
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -60,10 +61,13 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = movieAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        val databaseInfoTextView = findViewById<TextView>(R.id.text_view_database_info)
+
         movieViewModel.topRatedMovies.observe(this) { result ->
             when (result) {
                 is ResponseResult.Success -> {
                     movieAdapter.updateMovies(result.data)
+                    databaseInfoTextView.text = "Database size:\n${result.data.size}"
                 }
 
                 is ResponseResult.Error -> {

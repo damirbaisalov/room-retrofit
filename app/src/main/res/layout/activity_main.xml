@@ -29,6 +29,23 @@
         android:orientation="horizontal"
         android:gravity="center">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_database_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Database size:\n123"
+                android:lineHeight="24dp"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="wrap_content"

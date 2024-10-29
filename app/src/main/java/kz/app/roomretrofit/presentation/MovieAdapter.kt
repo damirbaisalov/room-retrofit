@@ -18,6 +18,7 @@ class MovieAdapter(
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val movieIdTextView: TextView = itemView.findViewById(R.id.text_view_id)
         val posterImageView: ImageView = itemView.findViewById(R.id.image_view_poster)
         val deleteImageView: ImageView = itemView.findViewById(R.id.image_view_delete)
         val titleTextView: TextView = itemView.findViewById(R.id.text_view_title)
@@ -33,6 +34,7 @@ class MovieAdapter(
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
+        holder.movieIdTextView.text = "Movie ID: ${movie.id}"
         holder.titleTextView.text = movie.title
         holder.ratingTextView.text = movie.rating
         holder.releaseTextView.text = movie.releaseDate

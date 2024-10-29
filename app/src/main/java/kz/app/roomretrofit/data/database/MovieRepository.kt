@@ -21,10 +21,10 @@ class MovieRepository(
                 val movies = cachedMovies.map { it.toUiModel() }
                 return ResponseResult.Success(movies)
             }
-            val response = apiService.getTopRatedMovies() //API
-            val moviesDb = response.results.map { it.toMovieDb() }
+            val responseResult = apiService.getTopRatedMovies().results.sortedBy { it.id } //API
+            val moviesDb = responseResult.map { it.toMovieDb() }
             movieDao.insertAll(moviesDb)
-            val moviesUi = response.results.map { it.toUiModel() }
+            val moviesUi = responseResult.map { it.toUiModel() }
             ResponseResult.Success(moviesUi)
         } catch (e: Exception) {
             ResponseResult.Error(e)
